@@ -1,5 +1,7 @@
 package com.john.util;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -12,8 +14,8 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import javax.servlet.http.HttpServletRequest;
+import net.sf.json.JSONObject;
 
 public class Common {
   public static final int READ_SIZE = 1;
@@ -129,6 +131,28 @@ public class Common {
     }
     
     return map;
+  }
+  
+  /**
+   * 轉JSON格式
+   * @param request
+   */
+  public static Object getJsonObj(HttpServletRequest request) {
+    JSONObject jsonObject = null;
+    try {
+      StringBuilder sb = new StringBuilder();
+      BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
+      String line = null;
+      while((line = br.readLine()) != null) {
+        sb.append(line);
+      }
+      br.close();
+      jsonObject = JSONObject.fromObject(sb.toString());
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return jsonObject;
   }
 
   /**

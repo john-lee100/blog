@@ -10,23 +10,30 @@ $(document).ready(function() {
     $('#form1').attr('action', url).attr('method', 'post').submit();
   });
   
-  
   /**帳號註冊*/
   $('#signUp').on('click', function() {
+    
     if(checkEmpty(['#account','#password','#password2','#userName'])) 
       return ;
     
-    if($('#password').val() != $('#password2').val()){
-      showMessage('','密碼與確認密碼不一致');
-      return ;
-    }
-
     var regular = /^[a-zA-Z0-9]{6,}$/;
     var accountRegular = checkRegular($('#account').val() , regular);
     if(accountRegular) {
       showMessage('帳號','不符合規則');
       return ;
     }
+    
+    var parma = [];
+    var data = ajaxGet('com.john.util.validate.AccountValidate','getAccountRepateInfo', parma);
+    if(data.show){
+      showMessage('帳號', data.msg);
+      return;
+    }
+    
+    if($('#password').val() != $('#password2').val()){
+      showMessage('','密碼與確認密碼不一致');
+      return ;
+    }    
 
     regular = /^(?=^.{8,}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*=()_+])(?!.*[-\/])/;
     var passRegular = checkRegular($('#password').val() , regular);
