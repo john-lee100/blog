@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class name="com.john.model.bo.BoardInfomation" table="BoardInfomation">
+    <id name="id" type="java.lang.Integer" column="id">
+      <generator class="native"/>
+    </id>
+    
+    <property name="boardsname" type="java.lang.String" column="boardsname" not-null="true" length="20" />
+    <property name="readcount" type="java.lang.Integer" column="readcount" />
+    <property name="replycoun" type="java.lang.Integer" column="replycoun" />
+    <property name="createDate" type="java.lang.String" column="createDate" length="7" />
+    <property name="createTime" type="java.lang.String" column="createTime" length="6"/>
+    <property name="description" type="java.lang.String" column="description" length="1000" />
+    
+    <many-to-one name="boardType" class="com.john.model.bo.BoardType" lazy="false">
+      <column name="boardTypeId" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="userInfo" class="com.john.model.bo.UserInfo" lazy="false">
+      <column name="userInfoId" not-null="true"/>
+    </many-to-one>
+    
+</class>
+</hibernate-mapping>

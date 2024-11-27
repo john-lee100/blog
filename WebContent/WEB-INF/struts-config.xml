@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd"
+[
+<!ENTITY options  SYSTEM "structspace/options.xml">
+<!ENTITY userPage  SYSTEM "structspace/userPage.xml">
+<!ENTITY boardPage  SYSTEM "structspace/boardPage.xml">
+<!ENTITY downloads  SYSTEM "structspace/downloads.xml">
+]
+>
+<struts-config>
+  <action-mappings>
+      &options;
+      &userPage;
+      &boardPage;
+      &downloads;
+  </action-mappings>
+  <controller />
+  <global-forwards />
+  <global-exceptions />
+</struts-config>

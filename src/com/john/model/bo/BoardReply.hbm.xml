@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class name="com.john.model.bo.BoardReply" table="BoardReply">
+    <id name="id" type="java.lang.Integer" column="id">
+      <generator class="native"/>
+    </id>
+    
+    <property name="message" type="java.lang.String" column="message" not-null="true" length="255" />
+    <property name="userID" type="java.lang.Integer" column="userID" />
+    <property name="userName" type="java.lang.String" column="userName" length="20"/>
+    <property name="createDate" type="java.lang.String" column="createDate" length="7" />
+    <property name="createTime" type="java.lang.String" column="createTime" length="6"/>
+
+    <many-to-one name="boardInfomation" class="com.john.model.bo.BoardInfomation" lazy="false">
+      <column name="boardInfomationId" not-null="true"/>
+    </many-to-one>
+</class>
+</hibernate-mapping>

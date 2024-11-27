@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" lazy-init="true">
+    <property name="dataSource">
+      <ref bean="dataSource" />
+    </property>
+    <property name="mappingResources">
+      <list>
+        <value>com/john/model/bo/CommonCity.hbm.xml</value>
+        <value>com/john/model/bo/CommonArea.hbm.xml</value>
+        <value>com/john/model/bo/UserInfo.hbm.xml</value>
+        <value>com/john/model/bo/BoardType.hbm.xml</value>
+        <value>com/john/model/bo/BoardInfomation.hbm.xml</value>
+        <value>com/john/model/bo/BoardReply.hbm.xml</value>
+      </list>
+    </property>
+    
+    <!-- <property name="annotatedClasses"></property> -->
+    
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.default_schema">${jdbc.schema}</prop>
+        <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+        <prop key="hibernate.c3p0.numHelperThreads">10</prop>
+        <prop key="hibernate.c3p0.autoCommitOnClose">true</prop>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+      </props>
+    </property>
+  </bean>
+  
+  <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+    <property name="sessionFactory">
+      <ref bean="sessionFactory" />
+    </property>
+    <!-- read-only HibernateTemplate -->
+    <property name="checkWriteOperations" value="false"/>
+  </bean>
+
+  
+  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory" /> 
+  </bean>
+  
+  <!-- read-only HibernateUtils -->
+  <tx:annotation-driven transaction-manager="transactionManager" />
+  
+</beans>

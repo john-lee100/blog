@@ -1,0 +1,5 @@
+<action parameter="method" path="/userPage" type="com.john.structs.account.UserPageAction">
+  <forward name="initBoardPage" path="/boardPage.do?method=initBoardPage"></forward>
+  <forward name="index" path="/index.jsp"></forward>
+  <forward name="signUp" path="/jsp/signUp.jsp"></forward>
+</action>

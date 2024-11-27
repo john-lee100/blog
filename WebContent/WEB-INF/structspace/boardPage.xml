@@ -1,0 +1,6 @@
+<action parameter="method" path="/boardPage" type="com.john.structs.board.BoardPageAction">
+  <forward name="boardList" path="/jsp/boardList.jsp"></forward>
+  <forward name="boardReply" path="/jsp/boardReply.jsp"></forward>
+  <forward name="replyPage" path="/jsp/createReply.jsp"></forward>
+  <forward name="createType" path="/jsp/createType.jsp"></forward>
+</action>

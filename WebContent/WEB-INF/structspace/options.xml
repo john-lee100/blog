@@ -1,0 +1,3 @@
+<action parameter="method" path="/options" type="com.john.structs.util.OptionsAction">
+
+</action>

@@ -1,0 +1,11 @@
+#MySQL 9 docker-compose
+create user 'cxjk'@'localhost' identified by 'A@996300!1l';
+grant all privileges on * . * to 'cxjk'@'localhost';
+flush privileges;
+
+#SQL Server 2017 docker-compose 
+create database blogger collate chinese_prc_ci_as;
+use blogger;
+create schema blog;
+#start eclipse
+select * from information_schema.tables;

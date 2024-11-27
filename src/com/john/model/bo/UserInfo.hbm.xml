@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+<class name="com.john.model.bo.UserInfo" table="UserInfo">
+    <id name="id" type="java.lang.Integer" column="id">
+      <generator class="native"/>
+    </id>
+
+    <property name="account" type="java.lang.String" column="account" not-null="true" length="20" />
+    <property name="password" type="java.lang.String" column="password" not-null="true" length="20" />
+    <property name="userName" type="java.lang.String" column="userName" length="20" />
+    <property name="email" type="java.lang.String" column="email" length="20" />
+    <property name="lastLoginDate" type="java.lang.String" column="lastLoginDate" length="7" />
+    <property name="lastLoginTime" type="java.lang.String" column="lastLoginTime" length="6" />
+    <property name="address" type="java.lang.String" column="address" length="100" />
+    
+    <many-to-one name="commonArea" class="com.john.model.bo.CommonArea" lazy="false">
+      <column name="commonAreaId" not-null="true"/>
+    </many-to-one>
+</class>
+</hibernate-mapping>

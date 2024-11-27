@@ -1,0 +1,3 @@
+<action parameter="method" path="/downloads" type="com.john.structs.util.DownloadsFileAction">
+
+</action>

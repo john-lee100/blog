@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+  
+  <bean class="com.john.model.service.ServiceDao">
+    <property name="commonCityDao">
+      <ref bean="commonCityDao" />
+    </property>
+    <property name="commonAreaDao">
+      <ref bean="commonAreaDao" />
+    </property>
+    <property name="userInfoDao">
+      <ref bean="userInfoDao" />
+    </property>
+    <property name="boardTypeDao">
+      <ref bean="boardTypeDao" />
+    </property>
+    <property name="boardInfomationDao">
+      <ref bean="boardInfomationDao" />
+    </property>
+    <property name="webContextService">
+      <ref bean="webContextService" />
+    </property>
+  </bean>
+</beans>
