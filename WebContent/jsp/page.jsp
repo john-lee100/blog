@@ -1,12 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.*"%>
-<%
-  String currentPage = request.getAttribute("currentPage").toString();
-  List<Integer> pageStoreList = (List<Integer>)request.getAttribute("pageStoreList");
-  if(pageStoreList != null)
-    pageStoreList = new ArrayList<Integer>();
-%>
 <html>
 <style>
 ul li {
