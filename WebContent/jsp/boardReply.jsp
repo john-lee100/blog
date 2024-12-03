@@ -94,4 +94,5 @@
         </table>
       </div>
     </c:forEach>
+    <jsp:include page="page.jsp"/>
   </div>

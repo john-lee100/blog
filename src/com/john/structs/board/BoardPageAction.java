@@ -33,15 +33,21 @@ public class BoardPageAction extends DispatchAction {
   /**view回復區*/
   public ActionForward boardReply(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
     int boardId = Common.getInteger(request.getParameter("boardId"));
+    String currentPage = request.getParameter("currentPage");
+    
     
     BoardInfomation boardSingleInfo = BoardPageBo.getBoardInfomation(boardId);
     
-    List<BoardReply> boardSingleReply = BoardPageBo.getBoardReply(boardId);
+    List<BoardReply> boardSingleReply = BoardPageBo.getBoardReply(boardId , currentPage);
+    
+    List<Integer> pageStoreList = BoardPageBo.setReplyPageSize(boardId);
     
     BoardPageBo.setReadcount(boardSingleInfo);
     
     request.setAttribute("boardSingleInfo", boardSingleInfo);
     request.setAttribute("boardSingleReply", boardSingleReply);
+    request.setAttribute("pageStoreList", pageStoreList);
+    
     return mapping.findForward("boardReply");
   }
   
