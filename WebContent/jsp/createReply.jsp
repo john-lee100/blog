@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/js/buttonSubmit.js"></script>
 </head>
 <body>
@@ -40,7 +43,8 @@
             </td>
             <td >
               <textarea id="message" name="message" cols="70" rows="10" data-name="留言"></textarea><br/><br/>
-              <lee:dateTag dateReadOnly="true"/><br/>
+              <input type="text" id="createDate"/>
+              <br/>
             </td>
           </tr>
           <tr class="tr3">
@@ -53,5 +57,16 @@
       <input type='hidden' name='boardId' id='boardId' value='${boardSingleInfo.id}'>
     </form>
   </div>
+  <table style="visibility: hidden;" id="table1">
+    <tbody>
+    <tr>
+      <td>
+        <input type="text" id="key_1">
+        <input type="text" data-type="cname" id="name_1">
+        <input type="button" value='add' id="btn_1">
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </body>
 </html>
